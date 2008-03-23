@@ -1,0 +1,18 @@
+<p>
+  <b>Category:</b>
+  <%=h @measurement_type.category_id %>
+</p>
+
+<p>
+  <b>Name:</b>
+  <%=h @measurement_type.name %>
+</p>
+
+<p>
+  <b>Description:</b>
+  <%=h @measurement_type.description %>
+</p>
+
+
+<%= link_to 'Edit', edit_measurement_type_path(@measurement_type) %> |
+<%= link_to 'Back', measurement_types_path %>

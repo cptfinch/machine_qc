@@ -1,0 +1,20 @@
+<h1>Listing qcsessions</h1>
+
+<table>
+  <tr>
+    <th>Machine</th>
+  </tr>
+
+<% for qcsession in @qcsessions %>
+  <tr>
+    <td><%=h qcsession.machine_id %></td>
+    <td><%= link_to 'Show', qcsession %></td>
+    <td><%= link_to 'Edit', edit_qcsession_path(qcsession) %></td>
+    <td><%= link_to 'Destroy', qcsession, :confirm => 'Are you sure?', :method => :delete %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New qcsession', new_qcsession_path %>

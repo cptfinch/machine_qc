@@ -1,0 +1,47 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+       "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+  <meta http-equiv="content-type" content="text/html;charset=UTF-8" />
+  <title>LDQC: <%= controller.action_name %></title>
+  <%= stylesheet_link_tag "bloomer" %>
+  <%= javascript_include_tag 'swfobject' %>
+</head>
+
+<body>
+<div id="header">
+  <ul id="nav">
+    <li><%= link_to 'Machines', machines_path %></li>
+    <li><%= link_to 'Measurements', measurements_path %></li>
+
+    <% if logged_in? -%>
+    <li class="login"><%=  link_to current_user.login, user_path(current_user) %></li>
+    <li class="logout"><%= link_to 'Logout', logout_path %></li>
+    <% else -%>
+    <li><%= link_to 'Signup', signup_path %></li>
+    <li><%= link_to 'Login', login_path %></li>
+    <% end -%>
+  </ul>
+  <p><%= link_to 'LDQC', home_path %></p>
+</div>
+
+<div id="content">
+  <%= content_tag 'p', h(flash[:notice]), :class => 'notice' if flash[:notice] %>
+  <%= content_tag 'p', h(flash[:error]), :class => 'notice error' if flash[:error] %>
+  <%= yield %>
+</div>
+<br/>
+
+
+<div id="footer">
+  <p class="disclaim">
+    <strong><%= random_quotes %></strong>
+  </p>
+  <p class="credit">
+    'Powered by'<a href="http://rubi-wan.blogspot.com/">Rubi-wan</a>
+  </p>
+  <br/>
+</div>
+</body>
+</html>

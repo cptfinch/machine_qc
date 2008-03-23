@@ -1,0 +1,23 @@
+<p>
+  <b>Measurement type:</b>
+  <%=h @measurement.measurement_type_id %>
+</p>
+
+<p>
+  <b>Qcsession:</b>
+  <%=h @measurement.qcsession_id %>
+</p>
+
+<p>
+  <b>Value:</b>
+  <%=h @measurement.value %>
+</p>
+
+<p>
+  <b>Machine:</b>
+  <%=h @measurement.machine_id %>
+</p>
+
+
+<%= link_to 'Edit', edit_measurement_path(@measurement) %> |
+<%= link_to 'Back', measurements_path %>
