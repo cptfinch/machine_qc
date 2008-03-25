@@ -25,7 +25,8 @@ class QcsessionsController < ApplicationController
   # GET /qcsessions/new.xml
   def new
     @qcsession = Qcsession.new
-
+    @machines= Machine.find(:all)
+    
     respond_to do |format|
       format.html # new.html.erb
       format.xml  { render :xml => @qcsession }

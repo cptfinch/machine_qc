@@ -1,7 +1,7 @@
 ActionController::Routing::Routes.draw do |map|
-  map.home '', :controller => 'home', :action => 'index'
+  map.root :controller => 'machines'
   
-  map.resources :qcsessions
+  map.resources :qcsessions, :has_many => [ :measurements ]  
 
   map.resources :machines
 
@@ -9,8 +9,6 @@ ActionController::Routing::Routes.draw do |map|
 
   map.resources :measurement_types
 
-  map.resources :measurements
-  
   map.resources :users
   
 #  map.resource :session, :controller => 'sessions'

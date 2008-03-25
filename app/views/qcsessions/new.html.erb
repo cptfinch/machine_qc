@@ -4,8 +4,10 @@
 
 <% form_for(@qcsession) do |f| %>
   <p>
-    <b>Machine</b><br />
-    <%= f.text_field :machine_id %>
+    Machine<br /> 
+    <%= 
+      collection_select(:qcsession, :machine_id, @machines, :id, :name, {:prompt => true})
+    %>
   </p>
 
   <p>

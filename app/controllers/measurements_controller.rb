@@ -1,4 +1,6 @@
 class MeasurementsController < ApplicationController
+  before_filter :get_qcsession, :get_machine, :only => :create
+  
   # GET /measurements
   # GET /measurements.xml
   def index
@@ -25,7 +27,8 @@ class MeasurementsController < ApplicationController
   # GET /measurements/new.xml
   def new
     @measurement = Measurement.new
-
+    @measurement_types = MeasurementType.find(:all)
+    
     respond_to do |format|
       format.html # new.html.erb
       format.xml  { render :xml => @measurement }
@@ -41,11 +44,14 @@ class MeasurementsController < ApplicationController
   # POST /measurements.xml
   def create
     @measurement = Measurement.new(params[:measurement])
-
+    @measurement.qcsession = @qcsession
+    @measurement.machine = @machine
+    
     respond_to do |format|
       if @measurement.save
         flash[:notice] = 'Measurement was successfully created.'
-        format.html { redirect_to(@measurement) }
+        format.html { render :action  => "new" }
+        # format.html { redirect_to(@measurement) }
         format.xml  { render :xml => @measurement, :status => :created, :location => @measurement }
       else
         format.html { render :action => "new" }
@@ -82,4 +88,14 @@ class MeasurementsController < ApplicationController
       format.xml  { head :ok }
     end
   end
+  
+  protected
+  def get_qcsession
+    @qcsession = Qcsession.find(params[:qcsession_id])
+  end
+  
+  def get_machine
+    @machine = @qcsession.machine 
+  end
+  
 end
