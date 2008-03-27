@@ -1,5 +1,5 @@
 ActionController::Routing::Routes.draw do |map|
-  map.root :controller => 'machines'
+  map.root :controller => 'machines', :action => 'index'
   
   map.resources :qcsessions, :has_many => [ :measurements ]  
 
