@@ -5,9 +5,7 @@ ActionController::Routing::Routes.draw do |map|
 
   map.resources :machines
 
-  map.resources :categories
-
-  map.resources :measurement_types
+  map.resources :categories, :has_many => [:measurement_types]
 
   map.resources :users
   

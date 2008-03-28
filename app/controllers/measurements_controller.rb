@@ -50,7 +50,7 @@ class MeasurementsController < ApplicationController
     respond_to do |format|
       if @measurement.save
         flash[:notice] = 'Measurement was successfully created.'
-        format.html { redirect_to(url_for([@qcsession, @measurement])) }
+        format.html { redirect_to(@qcsession) }
         # format.html { redirect_to(@measurement) }
         format.xml  { render :xml => @measurement, :status => :created, :location => @measurement }
       else

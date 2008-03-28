@@ -1,8 +1,14 @@
-<p>
-  <b>Machine:</b>
-  <%=h @qcsession.machine_id %>
-</p>
+<h1><%=h @qcsession.machine.name %></h1>
+<h2><%=h @qcsession.created_at.to_s(:short) %></h2>
+<h2>Measurements</h2>
 
+<table>
+  <tr><th>Measurement Type</th><th>Value</th></tr>
+  <% @qcsession.measurements.each do |measurement| %>
+    <tr><td><%=h measurement.name %></td><td><%=h measurement.value %></td></tr>
+  <% end %>
+</table>
 
 <%= link_to 'Edit', edit_qcsession_path(@qcsession) %> |
-<%= link_to 'Back', qcsessions_path %>
+<%= link_to 'Back', qcsessions_path %> |
+<%= link_to 'New Measurement', new_qcsession_measurement_path(@qcsession) %>
