@@ -13,8 +13,8 @@
     <td><%=h measurement_type.name %></td>
     <td><%=h measurement_type.description %></td>
     <td><%= link_to 'Show', url_for([@category, measurement_type]) %></td>
-    <td><%= link_to 'Edit', edit_category_measurement_type_path([@category,measurement_type]) %></td>
-    <td><%= link_to 'Destroy', measurement_type, :confirm => 'Are you sure?', :method => :delete %></td>
+    <td><%= link_to 'Edit', edit_category_measurement_type_path(@category,measurement_type) %></td>
+    <td><%= link_to 'Destroy', category_measurement_type_path(@category,measurement_type), :confirm => 'Are you sure?', :method => :delete %></td>
   </tr>
 <% end %>
 </table>
