@@ -45,7 +45,7 @@ class MachinesController < ApplicationController
     respond_to do |format|
       if @machine.save
         flash[:notice] = 'Machine was successfully created.'
-        format.html { redirect_to(@machine) }
+        format.html { redirect_to(machines_url) }
         format.xml  { render :xml => @machine, :status => :created, :location => @machine }
       else
         format.html { render :action => "new" }

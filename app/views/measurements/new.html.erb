@@ -2,7 +2,7 @@
 
 <%= error_messages_for :measurement %>
 
-<% form_for(@measurement) do |f| %>
+<% form_for([@qcsession, @measurement]) do |f| %>
   <p>
     Measurement_type<br /> 
     <%= 
@@ -20,4 +20,4 @@
   </p>
 <% end %>
 
-<%= link_to 'Back', measurements_path %>
+<%= link_to 'Back', qcsession_measurements_path %>

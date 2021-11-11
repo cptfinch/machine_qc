@@ -1,13 +1,11 @@
 ActionController::Routing::Routes.draw do |map|
-  map.root :controller => 'machines'
+  map.root :controller => 'machines', :action => 'index'
   
   map.resources :qcsessions, :has_many => [ :measurements ]  
 
   map.resources :machines
 
-  map.resources :categories
-
-  map.resources :measurement_types
+  map.resources :categories, :has_many => [:measurement_types]
 
   map.resources :users
   

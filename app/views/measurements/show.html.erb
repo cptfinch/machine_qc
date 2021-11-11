@@ -19,5 +19,6 @@
 </p>
 
 
-<%= link_to 'Edit', edit_measurement_path(@measurement) %> |
-<%= link_to 'Back', measurements_path %>
+<%= link_to 'Back', url_for([@qcsession,@measurement]) %>
+
+<%= link_to 'Back', edit_qcsession_measurement_path %>

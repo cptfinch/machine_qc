@@ -45,8 +45,8 @@ class QcsessionsController < ApplicationController
 
     respond_to do |format|
       if @qcsession.save
-        flash[:notice] = 'Qcsession was successfully created.'
-        format.html { redirect_to(@qcsession) }
+        flash[:notice] = 'QC Session was successfully created.'
+        format.html { redirect_to(qcsessions_url) }
         format.xml  { render :xml => @qcsession, :status => :created, :location => @qcsession }
       else
         format.html { render :action => "new" }

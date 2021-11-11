@@ -1,5 +1,5 @@
 class MeasurementsController < ApplicationController
-  before_filter :get_qcsession, :get_machine, :only => :create
+  before_filter :get_qcsession, :get_machine, :only => [:create, :new,:show]
   
   # GET /measurements
   # GET /measurements.xml
@@ -50,7 +50,7 @@ class MeasurementsController < ApplicationController
     respond_to do |format|
       if @measurement.save
         flash[:notice] = 'Measurement was successfully created.'
-        format.html { render :action  => "new" }
+        format.html { redirect_to(@qcsession) }
         # format.html { redirect_to(@measurement) }
         format.xml  { render :xml => @measurement, :status => :created, :location => @measurement }
       else

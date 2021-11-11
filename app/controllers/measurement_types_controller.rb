@@ -1,8 +1,10 @@
 class MeasurementTypesController < ApplicationController
+  before_filter :get_category#, :except => :index
+  
   # GET /measurement_types
   # GET /measurement_types.xml
   def index
-    @measurement_types = MeasurementType.find(:all)
+    @measurement_types = @category.measurement_types
 
     respond_to do |format|
       format.html # index.html.erb
@@ -25,6 +27,7 @@ class MeasurementTypesController < ApplicationController
   # GET /measurement_types/new.xml
   def new
     @measurement_type = MeasurementType.new
+    @categories = Category.find(:all)
 
     respond_to do |format|
       format.html # new.html.erb
@@ -41,11 +44,13 @@ class MeasurementTypesController < ApplicationController
   # POST /measurement_types.xml
   def create
     @measurement_type = MeasurementType.new(params[:measurement_type])
-
+    puts 'arse1'
+    @measurement_type.category = @category
+    puts 'arse2'
     respond_to do |format|
       if @measurement_type.save
         flash[:notice] = 'MeasurementType was successfully created.'
-        format.html { redirect_to(@measurement_type) }
+        format.html { redirect_to(@category) }
         format.xml  { render :xml => @measurement_type, :status => :created, :location => @measurement_type }
       else
         format.html { render :action => "new" }
@@ -81,5 +86,10 @@ class MeasurementTypesController < ApplicationController
       format.html { redirect_to(measurement_types_url) }
       format.xml  { head :ok }
     end
+  end
+  
+  protected
+  def get_category
+    @category = Category.find(params[:category_id])
   end
 end

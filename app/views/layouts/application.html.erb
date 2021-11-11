@@ -13,7 +13,7 @@
 <div id="header">
   <ul id="nav">
     <li><%= link_to 'Machines', machines_path %></li>
-    <li><%= link_to 'Measurements', measurements_path %></li>
+    <li><%= link_to 'QC sessions', qcsessions_path %></li>
 
     <% if logged_in? -%>
     <li class="login"><%=  link_to current_user.login, user_path(current_user) %></li>
@@ -23,7 +23,7 @@
     <li><%= link_to 'Login', login_path %></li>
     <% end -%>
   </ul>
-  <p><%= link_to 'LDQC', home_path %></p>
+  <p><%= link_to 'LDQC', root_url %></p>
 </div>
 
 <div id="content">

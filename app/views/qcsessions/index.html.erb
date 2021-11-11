@@ -1,13 +1,15 @@
-<h1>Listing qcsessions</h1>
+<h1>QC Sessions</h1>
 
 <table>
   <tr>
     <th>Machine</th>
+    <th>Created At</th>
   </tr>
 
 <% for qcsession in @qcsessions %>
   <tr>
-    <td><%=h qcsession.machine_id %></td>
+    <td><%=h qcsession.machine.name %></td>
+    <td><%=h qcsession.created_at.to_s(:short) %></td>
     <td><%= link_to 'Show', qcsession %></td>
     <td><%= link_to 'Edit', edit_qcsession_path(qcsession) %></td>
     <td><%= link_to 'Destroy', qcsession, :confirm => 'Are you sure?', :method => :delete %></td>
@@ -17,4 +19,4 @@
 
 <br />
 
-<%= link_to 'New qcsession', new_qcsession_path %>
+<%= link_to 'New QC Session', new_qcsession_path %>

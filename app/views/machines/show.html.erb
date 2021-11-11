@@ -2,7 +2,15 @@
   <b>Name:</b>
   <%=h @machine.name %>
 </p>
-
+<p>
+  <b>QC Sessions:</b>
+  <table>
+    <tr><th>Created On</th></tr>
+    <% @machine.qcsessions.each do |qcsession| %>
+      <tr><td><%= link_to qcsession.created_at.to_s(:short), qcsession_path(qcsession) %></td></tr>
+    <% end  %>    
+  </table>
+</p>
 
 <%= link_to 'Edit', edit_machine_path(@machine) %> |
 <%= link_to 'Back', machines_path %>
